@@ -13,11 +13,11 @@ const Login = () => {
                 </Header>
                 <Form>
                     <Segment stacked>
-                        <div>
+                        <div className='ui fluid input'>
                             <Field type='username' name='username' placeholder='Username' />
                         </div>
 
-                        <div>
+                        <div className='ui fluid input'>
                             <Field type='password' name='password' placeholder='Password' />
                         </div>
                         <Button>Login</Button>
