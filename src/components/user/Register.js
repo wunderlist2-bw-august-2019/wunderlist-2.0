@@ -13,21 +13,22 @@ const Register = () => {
                 </Header>
                 <Form>
                     <Segment stacked>
-                        <div>
+                        <div className='ui fluid input'>
                             <Field type='name' name='firstName' placeholder='First Name' />
                         </div>
 
-                        <div>
+                        <div className='ui fluid input'>
                             <Field type='name' name='lastName' placeholder='Last Name' />
                         </div>
-                        <div>
+                        
+                        <div className='ui fluid input'>
                             <Field type='username' name='username' placeholder='Username' />
                         </div>
 
-                        <div>
+                        <div className='ui fluid input'>
                             <Field type='password' name='password' placeholder='Password' />
                         </div>
-                        <Button>Create New Account</Button>
+                        <Button fluid>Create New Account</Button>
                     </Segment>
                 </Form>
                 <Message>
