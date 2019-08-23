@@ -1,25 +1,31 @@
 import React from 'react';
-import { Grid, Header, Button } from 'semantic-ui-react';
+import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 import { Form, Field, withFormik } from 'formik';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
     return (
         <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
-            <Grid.Column>
-                <Header as='h2' textAlign='center'>
+            <Grid.Column style={{maxWidth: 500}}>
+                <Header as='h1' textAlign='center'>
                     Welcome to Wunderlist 2.0!
                 </Header>
                 <Form>
-                    <div>
-                        <Field type='username' name='username' placeholder='Username' />
-                    </div>
+                    <Segment stacked>
+                        <div>
+                            <Field type='username' name='username' placeholder='Username' />
+                        </div>
 
-                    <div>
-                        <Field type='password' name='password' placeholder='Password' />
-                    </div>
-                    <Button>Login</Button>
+                        <div>
+                            <Field type='password' name='password' placeholder='Password' />
+                        </div>
+                        <Button>Login</Button>
+                    </Segment>
                 </Form>
+                <Message>
+                    <Link to='/register'>New User? Click Here</Link>
+                </Message>
             </Grid.Column>
         </Grid>
     )
