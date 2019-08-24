@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 import { Form, Field, withFormik } from 'formik';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,15 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 
-const Login = ({ touched, errors }) => {
+const Login = ({ touched, errors, status, setToken, setWelcomeMessage, setUserID }) => {
+    useEffect(() => {
+        if (status) {
+            setToken(status.token);
+            setWelcomeMessage(status.message);
+            setUserID(status.userID);
+        }
+    }, [status]);
+
     return (
         <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
             <Grid.Column style={{maxWidth: 500}}>
@@ -50,7 +58,6 @@ const formikForm = withFormik({
     handleSubmit(values, { setStatus, resetForm }) {
         axios.post("https://wunderlist-2.herokuapp.com/api/auth/login", values)
             .then(res => {
-                console.log('Login: axios.post: res: ', res)
                 setStatus(res.data);
                 resetForm();
             })
