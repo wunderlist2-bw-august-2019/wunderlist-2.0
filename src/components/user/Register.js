@@ -48,7 +48,13 @@ const formikForm = withFormik({
             username: username || "",
             password: password || ""
         }
-    }
+    },
+    validationSchema: Yup.object().shape({
+        firstName: Yup.string().required("Please enter your first name"),
+        lastName: Yup.string().required("Please enter your last name"),
+        username: Yup.string().required("Please enter a username"),
+        password: Yup.string().required("Please enter a password")
+    })
 })(Register);
 
 export default formikForm;
