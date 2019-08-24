@@ -8,12 +8,14 @@ import Register from './components/user/Register';
 
 function App() {
   const [token, setToken] = useCustomHook(localStorage.getItem("token"));
+  const [userID, setUserID] = useState("");
+  const [welcomeMessage, setWelcomeMessage] = useState("");
 
   return (
     <div className="App">
 
-      <Route exact path='/' render={props => <Login {...props} setToken={setToken}/>} />
-      <Route path='/register' render={props => <Register {...props} setToken={setToken} />} />
+      <Route exact path='/' render={props => <Login {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
+      <Route path='/register' render={props => <Register {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
 
       {/* <AppRouter /> */}
     </div>
