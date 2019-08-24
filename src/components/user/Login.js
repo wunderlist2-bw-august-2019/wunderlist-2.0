@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 
-const Login = () => {
+const Login = ({ touched, errors }) => {
     return (
         <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
             <Grid.Column style={{maxWidth: 500}}>
@@ -17,11 +17,14 @@ const Login = () => {
                         <div className='ui fluid input'>
                             <Field type='username' name='username' placeholder='Username' />
                         </div>
+                        {touched.username && errors.username && (<p className="error">{errors.username}</p>)}
 
                         <div className='ui fluid input'>
                             <Field type='password' name='password' placeholder='Password' />
                         </div>
-                        <Button>Login</Button>
+                        {touched.password && errors.password && (<p className="error">{errors.password}</p>)}
+                        
+                        <Button type="submit" fluid>Login</Button>
                     </Segment>
                 </Form>
                 <Message>
