@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 import { Form, Field, withFormik } from 'formik';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
 
 
 const Register = () => {
