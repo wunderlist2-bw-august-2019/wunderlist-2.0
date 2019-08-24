@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 
-// import AppRouter from './components/AppRouter';
+import HomePage from './components/HomePage';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 
@@ -13,11 +13,12 @@ function App() {
 
   return (
     <div className="App">
-
-      <Route exact path='/' render={props => <Login {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
-      <Route path='/register' render={props => <Register {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
-
-      {/* <AppRouter /> */}
+      {token ? <HomePage /> : 
+        <div>
+          <Route exact path='/' render={props => <Login {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
+          <Route path='/register' render={props => <Register {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
+        </div>
+      }
     </div>
   );
 
