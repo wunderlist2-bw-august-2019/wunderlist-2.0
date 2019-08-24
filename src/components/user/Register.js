@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 
-const Register = () => {
+const Register = ({ touched, errors }) => {
     return (
         <Grid textAlign='center' style={{height: '100vh'}} verticalAlign='middle'>
             <Grid.Column style={{maxWidth: 500}}>
@@ -17,18 +17,22 @@ const Register = () => {
                         <div className='ui fluid input'>
                             <Field type='name' name='firstName' placeholder='First Name' />
                         </div>
+                        {touched.firstName && errors.firstName && (<p className="error">{errors.firstName}</p>)}
 
                         <div className='ui fluid input'>
                             <Field type='name' name='lastName' placeholder='Last Name' />
                         </div>
+                        {touched.lastName && errors.lastName && (<p className="error">{errors.lastName}</p>)}
                         
                         <div className='ui fluid input'>
                             <Field type='username' name='username' placeholder='Username' />
                         </div>
+                        {touched.username && errors.username && (<p className="error">{errors.username}</p>)}
 
                         <div className='ui fluid input'>
                             <Field type='password' name='password' placeholder='Password' />
                         </div>
+                        {touched.password && errors.password && (<p className="error">{errors.password}</p>)}
                         <Button fluid>Create New Account</Button>
                     </Segment>
                 </Form>
