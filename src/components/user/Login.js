@@ -3,6 +3,7 @@ import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 import { Form, Field, withFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 
 const Login = ({ touched, errors }) => {
@@ -45,7 +46,16 @@ const formikForm = withFormik({
     validationSchema: Yup.object().shape({
         username: Yup.string().required("Enter your username"),
         password: Yup.string().required("Enter your password")
-    })
+    }),
+    handleSubmit(values, { setStatus, resetForm }) {
+        axios.post("https://wunderlist-2.herokuapp.com/api/auth/login", values)
+            .then(res => {
+                console.log('Login: axios.post: res: ', res)
+                setStatus(res.data);
+                resetForm();
+            })
+            .catch(err => console.error(err))
+    }
 })(Login);
 
 export default formikForm;
