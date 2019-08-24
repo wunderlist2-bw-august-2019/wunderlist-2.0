@@ -7,7 +7,7 @@ import Login from './components/user/Login';
 import Register from './components/user/Register';
 
 function App() {
-  const [token, setToken] = useCustomHook(localStorage.getItem("token"));
+  const [token, setToken] = useCustomHook("token");
   const [userID, setUserID] = useState("");
   const [welcomeMessage, setWelcomeMessage] = useState("");
 
