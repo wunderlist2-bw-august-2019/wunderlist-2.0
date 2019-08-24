@@ -42,7 +42,7 @@ const Register = ({ touched, errors, status, setToken, setWelcomeMessage, setUse
                             <Field type='password' name='password' placeholder='Password' />
                         </div>
                         {touched.password && errors.password && (<p className="error">{errors.password}</p>)}
-                        <Button fluid>Create New Account</Button>
+                        <Button type="submit" fluid>Create New Account</Button>
                     </Segment>
                 </Form>
                 <Message>
