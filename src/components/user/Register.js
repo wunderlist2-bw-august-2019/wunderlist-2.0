@@ -39,6 +39,15 @@ const Register = () => {
     )
 }
 
-const formikForm = withFormik({})(Register);
+const formikForm = withFormik({
+    mapPropsToValues({firstName, lastName, username, password}) {
+        return {
+            firstName: firstName || "",
+            lastName: lastName || "",
+            username: username || "",
+            password: password || ""
+        }
+    }
+})(Register);
 
 export default formikForm;
