@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
-import AppRouter from './components/AppRouter';
+
+// import AppRouter from './components/AppRouter';
+import Login from './components/user/Login';
+import Register from './components/user/Register';
 
 function App() {
   const [token, setToken] = useCustomHook(localStorage.getItem("token"));
 
   return (
     <div className="App">
-      <AppRouter />
+
+      <Route exact path='/' render={props => <Login {...props} setToken={setToken}/>} />
+      <Route path='/register' render={props => <Register {...props} setToken={setToken} />} />
+
+      {/* <AppRouter /> */}
     </div>
   );
 
