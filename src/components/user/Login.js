@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 import { Form, Field, withFormik } from 'formik';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
 
 
 const Login = () => {
@@ -37,7 +38,11 @@ const formikForm = withFormik({
             username: username || "",
             password: password || ""
         }
-    }
+    },
+    validationSchema: Yup.object().shape({
+        username: Yup.string().required("Enter your username"),
+        password: Yup.string().required("Enter your password")
+    })
 })(Login);
 
 export default formikForm;
