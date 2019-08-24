@@ -31,6 +31,13 @@ const Login = () => {
     )
 }
 
-const formikForm = withFormik({})(Login);
+const formikForm = withFormik({
+    mapPropsToValues({ username, password }) {
+        return {
+            username: username || "",
+            password: password || ""
+        }
+    }
+})(Login);
 
 export default formikForm;
