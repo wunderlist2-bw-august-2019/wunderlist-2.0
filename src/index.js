@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
+import Todo from './components/tasks/Todo';
+
 
 
 ReactDOM.render(
     <Router>
-        <App />
+        <Todo />
     </Router>, 
     document.getElementById('root'));
 
