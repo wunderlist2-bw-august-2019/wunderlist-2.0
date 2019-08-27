@@ -78,9 +78,9 @@ export default function Menu() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Todo 
           </Typography>
-        < Search />
+        <Search />
         </Toolbar>
       </AppBar>
     </div>
