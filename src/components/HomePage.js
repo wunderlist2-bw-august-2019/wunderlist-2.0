@@ -19,7 +19,10 @@ import  '../index.css';
 
 function HomePage(props) {
   return (
+    <div>
   < SearchBar />
+  <Todo />
+  </div>
   )
 }
 
