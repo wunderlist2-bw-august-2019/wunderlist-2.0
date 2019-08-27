@@ -14,13 +14,13 @@ import AddTodo from './tasks/AddTodo';
 import Layout from './tasks/Layout';
 import { useInputValue , useTodos } from './Hooks/CustomHooks';
 import Todo from './tasks/Todo';
-import SearchBar from '../components/SearchBar';
+import SearchBar from './Menu';
 import  '../index.css';
 
 function HomePage(props) {
   return (
     <div>
-  < SearchBar />
+  <SearchBar />
   <Todo />
   </div>
   )

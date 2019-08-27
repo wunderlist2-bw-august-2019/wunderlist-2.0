@@ -1,35 +1,22 @@
-import React, { useState, memo } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import { fade } from '@material-ui/core/styles/colorManipulator';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import TodoList from './tasks/TodoList';
-import AddTodo from './tasks/AddTodo';
-import Layout from './tasks/Layout';
-import { useInputValue , useTodos } from './Hooks/CustomHooks';
-import Todo from './tasks/Todo';
-import  '../index.css';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-  },
-  grow: {
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    marginRight: theme.spacing(2),
   },
   title: {
+    flexGrow: 1,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -45,12 +32,12 @@ const styles = theme => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit,
-      width: '80%',
+      marginLeft: theme.spacing(1),
+      width: 'auto',
     },
   },
   searchIcon: {
-    width: theme.spacing.unit * 9,
+    width: theme.spacing(7),
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -60,13 +47,9 @@ const styles = theme => ({
   },
   inputRoot: {
     color: 'inherit',
-    width: '100%',
   },
   inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
+    padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -76,21 +59,13 @@ const styles = theme => ({
       },
     },
   },
-});
+}));
 
-function SearchAppBar(props) {
-  const { classes } = props;
+export default function SearchAppBar() {
+  const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-        <Fab color="primary" aria-label="add" className={classes.fab}>
-        <AddIcon />
-      </Fab>
-          <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Lambda WunderList 2.0
-          </Typography>
-          <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -101,16 +76,9 @@ function SearchAppBar(props) {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-        </Toolbar>
-      </AppBar>
     </div>
   );
 }
-
-SearchAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SearchAppBar);
