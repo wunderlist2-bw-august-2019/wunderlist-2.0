@@ -5,12 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
 import Todo from './components/tasks/Todo';
+import HomePage from './components/HomePage';
 
 
 
 ReactDOM.render(
     <Router>
-        <Todo />
+        <HomePage />
     </Router>, 
     document.getElementById('root'));
 
