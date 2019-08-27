@@ -14,6 +14,7 @@ import AddTodo from './tasks/AddTodo';
 import Layout from './tasks/Layout';
 import { useInputValue , useTodos } from './Hooks/CustomHooks';
 import Todo from './tasks/Todo';
+import  '../index.css';
 
 
 const styles = theme => ({
@@ -79,6 +80,7 @@ const styles = theme => ({
 function SearchAppBar(props) {
   const { classes } = props;
   return (
+    <div className= "homepage-container">
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
@@ -100,12 +102,13 @@ function SearchAppBar(props) {
                 input: classes.inputInput,
               }}
             />
-            <div className="todoList">
-              < Todo />
-            </div>
           </div>
         </Toolbar>
       </AppBar>
+      <div className="todoList">
+      < Todo />
+    </div>
+    </div>
     </div>
   );
 }
