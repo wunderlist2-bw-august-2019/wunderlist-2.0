@@ -18,24 +18,23 @@ const TodoApp = memo(props => {
 
   let todoCount = todos.length;
 
-if (todoCount === 0) {
-  return (
-    <div className= "todoList">
-      <h3>You do have nothing to do.</h3>
-    </div>
-  )
-}
-   
+// if (todoCount = 0) {
+//   return (
+//     <div className= "todoList">
+//       <h3>Are you being lazy or productive? we ask because you have nothing to do. </h3>
+//     </div>
+//   )
+// }
 return (      
 
     <Layout>
     
-     {/* <AddTodo 
+     <AddTodo 
         inputValue={inputValue}
         onInputChange={changeInput}
         onButtonClick={clearInputAndAddTodo}
         onInputKeyPress={event => keyInput(event, clearInputAndAddTodo)}
-     />   */}
+     />   
 <div className="todoList">
       <TodoList
         items={todos}
