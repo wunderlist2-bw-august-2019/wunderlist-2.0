@@ -20,7 +20,7 @@ import  '../index.css';
 function HomePage(props) {
   return (
     <div>
-  < SearchBar />
+  <SearchBar />
   <Todo />
   </div>
   )
