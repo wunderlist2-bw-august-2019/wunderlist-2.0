@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import TodoList from './tasks/TodoList';
@@ -15,7 +15,8 @@ import Layout from './tasks/Layout';
 import { useInputValue , useTodos } from './Hooks/CustomHooks';
 import Todo from './tasks/Todo';
 import  '../index.css';
-
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 const styles = theme => ({
   root: {
@@ -83,9 +84,9 @@ function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            <MenuIcon />
-          </IconButton>
+        <Fab color="primary" aria-label="add" className={classes.fab}>
+        <AddIcon />
+      </Fab>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
             Lambda WunderList 2.0
           </Typography>
