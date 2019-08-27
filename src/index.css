@@ -13,5 +13,7 @@ code {
 }
 
 .todoList {
-  padding-top: 100px;
+  padding-top: 30px;
+  align-content: center;
+  text-align: center;
 }
