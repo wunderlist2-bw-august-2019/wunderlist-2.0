@@ -3,7 +3,7 @@
 import React, { memo } from "react";
 import ReactDOM from "react-dom";
 
-import { useInputValue, useTodos } from "../Hooks/custom-hooks";
+import { useInputValue, useTodos } from "../Hooks/CustomHooks";
 
 import Layout from "./Layout";
 
