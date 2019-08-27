@@ -100,6 +100,9 @@ function SearchAppBar(props) {
                 input: classes.inputInput,
               }}
             />
+            <div className="todoList">
+              < Todo />
+            </div>
           </div>
         </Toolbar>
       </AppBar>
