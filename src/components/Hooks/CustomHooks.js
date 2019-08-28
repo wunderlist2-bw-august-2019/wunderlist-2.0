@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useInputValue = (initialValue = "") => {
+export const useInputValue = (initialValue = { title: "", task: "", setDate: "", user_id: "" }) => {
   const [inputValue, setInputValue] = useState(initialValue);
 
   return {
