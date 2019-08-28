@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form, Field, withFormik } from 'formik';
+import { Button } from 'semantic-ui-react';
+import axios from 'axios';
 
 const NewTask = props => {
   return (
@@ -24,6 +26,7 @@ const NewTask = props => {
       <div className="field">
         <Field component="textarea" label="Notes" name="notes" placeholder="Notes" rows="2" />
       </div>
+      <Button type="submit">Add Task</Button>
     </Form>
   )
 }
@@ -36,6 +39,11 @@ const formikForm = withFormik({
       setDate: setDate || "",
       user_id: localStorage.getItem("user_id") 
     }
+  },
+  handleSubmit(values, { setStatus, resetForm }) {
+    axios.post('https://wunderlist-2.herokuapp.com/api/todos/', values)
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err))
   }
 })(NewTask);
 
