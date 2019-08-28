@@ -28,6 +28,14 @@ const NewTask = props => {
   )
 }
 
-const formikForm = withFormik({})(NewTask);
+const formikForm = withFormik({
+  mapPropsToValues({ task, title, setDate }) {
+    return {
+      task: task || "",
+      title: title || "",
+      setDate: setDate || ""
+    }
+  }
+})(NewTask);
 
 export default formikForm;
