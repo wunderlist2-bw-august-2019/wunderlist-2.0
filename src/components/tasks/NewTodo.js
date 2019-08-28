@@ -33,7 +33,8 @@ const formikForm = withFormik({
     return {
       task: task || "",
       title: title || "",
-      setDate: setDate || ""
+      setDate: setDate || "",
+      user_id: localStorage.getItem("user_id") 
     }
   }
 })(NewTask);
