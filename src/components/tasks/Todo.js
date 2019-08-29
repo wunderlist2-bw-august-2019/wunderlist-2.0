@@ -41,7 +41,7 @@ const TodoApp = memo(props => {
 return (      
 
     <Layout>
-      <NewTodo getTodos={getTodos} />
+     {/* <NewTodo getTodos={getTodos} /> */}
       <div className="todoList">
         <TodoList
           items={todos}

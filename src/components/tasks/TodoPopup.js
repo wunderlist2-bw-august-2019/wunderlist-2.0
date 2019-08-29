@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, memo, useEffect } from "react";
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -6,6 +7,7 @@ import Fade from '@material-ui/core/Fade';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import NewTodo from './NewTodo';
+import Todo from './Todo';
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +38,21 @@ const useStyles = makeStyles(theme => ({
       setOpen(false);
     };
   
+
+    const [todos, setTodos] = useState([]);
+  
+    const getTodos = () => {
+      axios.get('https://wunderlist-2.herokuapp.com/api/todos/')
+        .then(res => {
+          setTodos(res.data.filter(todo => `${todo.user_id}` === localStorage.getItem("user_id")));
+        })
+    }
+  
+    useEffect(() => {
+      getTodos();
+    }, [])
+
+    
     return (
       <div>
       <Fab size="small" color="primary" aria-label="add" className={classes.margin} onClick={handleOpen}>
@@ -56,7 +73,8 @@ const useStyles = makeStyles(theme => ({
         >
           <Fade in={open}>
             <div className={classes.paper}>
-         <NewTodo />
+            <NewTodo getTodos={getTodos} />
+
             </div>
           </Fade>
         </Modal>
