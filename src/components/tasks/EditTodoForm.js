@@ -3,7 +3,7 @@ import { Form, Field, withFormik } from 'formik';
 import { Button } from 'semantic-ui-react';
 import axios from 'axios';
 
-const EditTask = ({ status, getTodos }) => {
+const EditTask = ({ status, todo, getTodos }) => {
   useEffect(() => {
     if (status) {
       getTodos();
@@ -15,7 +15,7 @@ const EditTask = ({ status, getTodos }) => {
       <div className="equal width fields">
         <div className="field">
           <div className="ui fluid input">
-            <Field className="ui fluid input" type="input" label="Task" name="task" placeholder="Add Todo Here" />
+            <Field className="ui fluid input" type="input" label="Task" name="task" placeholder={todo.task || "Add Todo Here"} />
           </div>
         </div>
         <div className="field">

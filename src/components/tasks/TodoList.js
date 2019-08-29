@@ -10,7 +10,7 @@ const TodoList = memo(props => (
         <List style={{ overflow: "scroll" }}>
           {props.items.map((todo, idx) => (
             <TodoListItem
-              {...todo}
+              todo={todo}
               key={todo.id}
               divider={idx !== props.items.length - 1}
               getTodos={props.getTodos}

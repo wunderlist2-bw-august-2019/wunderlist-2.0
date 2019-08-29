@@ -13,8 +13,9 @@ import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 import EditTodo from './EditTodo';
 
 const TodoListItem = memo(props => {
+  const todo = props.todo;
   const deleteNote = () => {
-    axios.delete(`https://wunderlist-2.herokuapp.com/api/todos/${props.id}`, { id: props.id })
+    axios.delete(`https://wunderlist-2.herokuapp.com/api/todos/${todo.id}`, { id: props.id })
       .then(res => {
         props.getTodos();
         alert(res.data.message);
@@ -28,11 +29,11 @@ const TodoListItem = memo(props => {
       checked={props.checked}
       disableRipple />
     <div style={{flexDirection: 'row'}}>
-      <ListItemText secondary={props.title} />
-      <ListItemText primary={props.task} />
+      <ListItemText secondary={todo.title} />
+      <ListItemText primary={todo.task} />
     </div>
     <ListItemSecondaryAction>
-      <EditTodo />
+      <EditTodo todo={todo} getTodos={props.getTodos} />
       <IconButton aria-label="Delete Todo" onClick={deleteNote}>
         <DeleteOutlined />
       </IconButton>

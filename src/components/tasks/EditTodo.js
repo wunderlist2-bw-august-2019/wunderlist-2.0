@@ -6,7 +6,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 import EditTodoForm from './EditTodoForm';
 
-const EditTodo = ({ status, getTodos }) => {
+const EditTodo = ({ todo, getTodos }) => {
   return (
     <Modal trigger={
       <IconButton aria-label="Edit Todo" onClick={() => console.log('clicked')}>
@@ -16,7 +16,7 @@ const EditTodo = ({ status, getTodos }) => {
     >
       <Modal.Header>Edit/Update Task</Modal.Header>
       <Modal.Content>
-        <EditTodoForm status={status} getTodos={getTodos} />
+        <EditTodoForm todo={todo} getTodos={getTodos} />
       </Modal.Content>
     </Modal>
   )
