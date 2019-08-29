@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import { Button } from 'semantic-ui-react';
 import axios from 'axios';
 
-const NewTask = props => {
+const NewTask = ({ status, getTodos }) => {
+  useEffect(() => {
+    if (status) {
+      getTodos();
+    }
+  }, [status])
+
   return (
     <Form className="ui form">
       <div className="equal width fields">
@@ -42,7 +48,10 @@ const formikForm = withFormik({
   },
   handleSubmit(values, { setStatus, resetForm }) {
     axios.post('https://wunderlist-2.herokuapp.com/api/todos/', values)
-      .then(res => console.log(res.data))
+      .then(res => {
+        setStatus(res.data);
+        resetForm();
+      })
       .catch(err => console.error(err))
   }
 })(NewTask);
