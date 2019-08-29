@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import ReactDOM from "react-dom";
 import { useInputValue, useTodos } from "../Hooks/CustomHooks";
 import Layout from "./Layout";
-import AddTodo from "./AddTodo";
+import NewTodo from "./NewTodo";
 import TodoList from "./TodoList";
 import "./todoList.css";
 
@@ -28,13 +28,7 @@ const TodoApp = memo(props => {
 return (      
 
     <Layout>
-    
-     <AddTodo 
-        inputValue={inputValue}
-        onInputChange={changeInput}
-        onButtonClick={clearInputAndAddTodo}
-        onInputKeyPress={event => keyInput(event, clearInputAndAddTodo)}
-     />   
+      <NewTodo />
 <div className="todoList">
       <TodoList
         items={todos}

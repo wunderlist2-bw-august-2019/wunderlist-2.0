@@ -8,8 +8,8 @@ import Register from './components/user/Register';
 
 function App() {
   const [token, setToken] = useCustomHook("token");
-  const [userID, setUserID] = useState("");
-  const [welcomeMessage, setWelcomeMessage] = useState("");
+  const [userID, setUserID] = useCustomHook("user_id");
+  const [welcomeMessage, setWelcomeMessage] = useCustomHook("welcomMessage");
 
   return (
     <div className="App">
