@@ -7,6 +7,7 @@ import Fade from '@material-ui/core/Fade';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import NewTodo from './NewTodo';
+import Button from '@material-ui/core/Button';
 import Todo from './Todo';
 
 
@@ -74,9 +75,13 @@ const useStyles = makeStyles(theme => ({
           <Fade in={open}>
             <div className={classes.paper}>
             <NewTodo getTodos={getTodos} />
-
+            <Button  onClick={handleClose} variant="contained" color="secondary" className={classes.button}>
+            Cancel
+          </Button>
             </div>
+           
           </Fade>
+          
         </Modal>
       </div>
     );
