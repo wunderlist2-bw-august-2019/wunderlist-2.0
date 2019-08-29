@@ -4,13 +4,20 @@ import { IconButton } from '@material-ui/core';
 import { Modal } from 'semantic-ui-react';
 import EditIcon from '@material-ui/icons/Edit';
 
+import EditTodoForm from './EditTodoForm';
+
 const EditTodo = ({ status, getTodos }) => {
   return (
     <Modal trigger={
       <IconButton aria-label="Edit Todo" onClick={() => console.log('clicked')}>
         <EditIcon />      
-      </IconButton>
-    } centered="false">
+      </IconButton>}
+      centered="false"
+    >
+      <Modal.Header>Edit/Update Task</Modal.Header>
+      <Modal.Content>
+        <EditTodoForm status={status} getTodos={getTodos} />
+      </Modal.Content>
     </Modal>
   )
 }
