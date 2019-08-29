@@ -47,7 +47,7 @@ return (
           items={todos}
           // onItemCheck={idx => checkTodo(idx)}
           // onItemRemove={idx => removeTodo(idx)}
-        />
+          getTodos={getTodos} />
       </div>
     </Layout>
  
