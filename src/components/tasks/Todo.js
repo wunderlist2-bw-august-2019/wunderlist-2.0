@@ -41,13 +41,13 @@ const TodoApp = memo(props => {
 return (      
 
     <Layout>
-      <NewTodo />
-<div className="todoList">
-      <TodoList
-        items={todos}
-        // onItemCheck={idx => checkTodo(idx)}
-        // onItemRemove={idx => removeTodo(idx)}
-      />
+      <NewTodo getTodos={getTodos} />
+      <div className="todoList">
+        <TodoList
+          items={todos}
+          // onItemCheck={idx => checkTodo(idx)}
+          // onItemRemove={idx => removeTodo(idx)}
+        />
       </div>
     </Layout>
  
