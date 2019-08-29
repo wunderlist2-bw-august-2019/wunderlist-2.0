@@ -3,14 +3,14 @@ import axios from 'axios';
 
 import {
   ListItem,
-  ListSubheader,
   Checkbox,
   IconButton,
   ListItemText,
   ListItemSecondaryAction
 } from "@material-ui/core";
 import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
-import EditIcon from '@material-ui/icons/Edit';
+
+import EditTodo from './EditTodo';
 
 const TodoListItem = memo(props => {
   const deleteNote = () => {
@@ -32,9 +32,7 @@ const TodoListItem = memo(props => {
       <ListItemText primary={props.task} />
     </div>
     <ListItemSecondaryAction>
-      <IconButton aria-label="Edit Todo" onClick={() => console.log('clicked')}>
-        <EditIcon />
-      </IconButton>
+      <EditTodo />
       <IconButton aria-label="Delete Todo" onClick={deleteNote}>
         <DeleteOutlined />
       </IconButton>
