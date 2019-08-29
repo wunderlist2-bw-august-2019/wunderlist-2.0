@@ -3,9 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import NewTodo from './tasks/NewTodo';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
+import NewTodo from './NewTodo';
+
 
 const useStyles = makeStyles(theme => ({
     modal: {
@@ -55,11 +56,10 @@ const useStyles = makeStyles(theme => ({
         >
           <Fade in={open}>
             <div className={classes.paper}>
-          <NewTodo />
+         <NewTodo />
             </div>
           </Fade>
         </Modal>
       </div>
     );
   }
-  

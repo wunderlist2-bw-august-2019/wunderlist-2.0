@@ -8,6 +8,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Search from './Search';
+import TodoPopup from './tasks/TodoPopup'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -69,14 +71,7 @@ export default function Menu() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+<TodoPopup />
           <Typography className={classes.title} variant="h6" noWrap>
             Todo 
           </Typography>
