@@ -20,17 +20,17 @@ const EditTask = ({ status, todo, getTodos }) => {
         </div>
         <div className="field">
           <div className="ui fluid input">
-            <Field type="input" label="Category" name="title" placeholder="Category" />
+            <Field type="input" label="Category" name="title" placeholder={todo.title || "Category"} />
           </div>
         </div>
         <div className="field">
           <div className="ui fluid input">
-            <Field type="input" label="Due Date" name="setDate" placeholder="Due Date" />
+            <Field type="input" label="Due Date" name="setDate" placeholder={todo.setDate || "Due Date"} />
           </div>
         </div>
       </div>
       <div className="field">
-        <Field component="textarea" label="Notes" name="notes" placeholder="Notes" rows="2" />
+        <Field component="textarea" label="Notes" name="notes" placeholder={todo.notes || "Notes"} rows="2" />
       </div>
       <Button type="submit">Update Task</Button>
     </Form>
