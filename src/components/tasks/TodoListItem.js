@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 
 import {
-  List,
   ListItem,
+  ListSubheader,
   Checkbox,
   IconButton,
   ListItemText,
@@ -18,6 +18,7 @@ const TodoListItem = memo(props => (
       disableRipple
     />
     <ListItemText primary={props.task} />
+    <ListSubheader>{props.title}</ListSubheader>
     <ListItemSecondaryAction>
       <IconButton aria-label="Delete Todo" onClick={props.onButtonClick}>
         <DeleteOutlined />
