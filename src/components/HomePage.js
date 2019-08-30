@@ -6,7 +6,7 @@ import { Header, Icon } from 'semantic-ui-react';
 import  '../index.css';
 
 
-function HomePage({ welcomeMessage }) {
+function HomePage({ welcomeMessage, logout }) {
   const [todos, setTodos] = useState([]);
   const getTodos = () => {
     axios.get('https://wunderlist-2.herokuapp.com/api/todos/')
@@ -18,7 +18,7 @@ function HomePage({ welcomeMessage }) {
 
   return (
     <div>
-      <SearchBar getTodos={getTodos} welcomeMessage={welcomeMessage} />
+      <SearchBar getTodos={getTodos} welcomeMessage={welcomeMessage} logout={logout} />
       <Header as="h1">Wunderlist 2.0 <Icon name="file alternate outline" /></Header>
       {todos.length ? <Todo getTodos={getTodos} todos={todos}/> : <Header as="h3">Don't be lazy. Add some todos!</Header>}
     </div>
