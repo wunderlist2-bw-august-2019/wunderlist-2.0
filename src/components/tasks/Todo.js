@@ -4,20 +4,16 @@ import TodoList from "./TodoList";
 import "./todoList.css";
 
 const TodoApp = memo(props => {
-
-
   useEffect(() => {
     props.getTodos();
   }, [])
 
-
-return (      
-
+  return (      
     <Layout>
-   
       <div className="todoList">
         <TodoList
           items={props.todos}
+          getTodos={props.getTodos}
         />
       </div>
     </Layout>
