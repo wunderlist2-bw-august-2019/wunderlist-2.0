@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { List, Paper, Grid } from "@material-ui/core";
+import { List, Paper } from "@material-ui/core";
 
 import TodoListItem from "./TodoListItem";
 
@@ -10,10 +10,10 @@ const TodoList = memo(props => (
         <List style={{ overflow: "scroll" }}>
           {props.items.map((todo, idx) => (
             <TodoListItem
-              {...todo}
-              key={`TodoItem.${idx}`}
+              todo={todo}
+              key={todo.id}
               divider={idx !== props.items.length - 1}
-              onButtonClick={() => props.onItemRemove(idx)}
+              getTodos={props.getTodos}
               onCheckBoxToggle={() => props.onItemCheck(idx)}
             />
           ))}

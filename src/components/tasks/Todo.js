@@ -18,7 +18,6 @@ return (
       <div className="todoList">
         <TodoList
           items={props.todos}
-
         />
       </div>
     </Layout>
