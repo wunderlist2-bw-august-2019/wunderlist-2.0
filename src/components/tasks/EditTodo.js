@@ -10,7 +10,7 @@ const EditTodo = ({ todo, getTodos }) => {
   console.log('EditTodo: todo: ', todo)
   return (
     <Modal trigger={
-      <IconButton aria-label="Edit Todo">
+      <IconButton aria-label="Edit Todo" color="primary">
         <EditIcon />      
       </IconButton>}
       centered="false"
