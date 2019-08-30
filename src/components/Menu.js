@@ -60,16 +60,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Menu({getTodos}) {
+export default function Menu({ getTodos, welcomeMessage }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-<TodoPopup getTodos={getTodos} />
+          <TodoPopup getTodos={getTodos} />
           <Typography className={classes.title} variant="h6" noWrap>
-            Todo 
+            {welcomeMessage} 
           </Typography>
         <Search />
         </Toolbar>

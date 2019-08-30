@@ -18,7 +18,7 @@ function HomePage({ welcomeMessage }) {
 
   return (
     <div>
-      <SearchBar getTodos={getTodos}/>
+      <SearchBar getTodos={getTodos} welcomeMessage={welcomeMessage} />
       <Header as="h1">Wunderlist 2.0 <Icon name="file alternate outline" /></Header>
       {todos.length ? <Todo getTodos={getTodos} todos={todos}/> : <Header as="h3">Don't be lazy. Add some todos!</Header>}
     </div>
