@@ -24,6 +24,10 @@ const TodoListItem = memo(props => {
     setUpdateTask(!updateTask);
   }
 
+  const strikeChecked = () => {
+    
+  }
+
   const deleteNote = () => {
     axios.delete(`https://wunderlist-2.herokuapp.com/api/todos/${todo.id}`, { id: props.id })
       .then(res => {
@@ -39,12 +43,12 @@ const TodoListItem = memo(props => {
       checked={updateTask}
       disableRipple />
     <div style={{flexDirection: 'row'}}>
-      <ListItemText secondary={todo.title} />
+      <ListItemText secondary={todo.title}  />
       <ListItemText primary={todo.task} />
     </div>
     <ListItemSecondaryAction>
       <EditTodo todo={todo} getTodos={props.getTodos} />
-      <IconButton aria-label="Delete Todo" onClick={deleteNote}>
+      <IconButton aria-label="Delete Todo" onClick={deleteNote} color="secondary">
         <DeleteOutlined />
       </IconButton>
     </ListItemSecondaryAction>
