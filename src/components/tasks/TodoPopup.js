@@ -1,5 +1,4 @@
 import React, { useState, memo, useEffect } from "react";
-import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -8,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import NewTodo from './NewTodo';
 import Button from '@material-ui/core/Button';
-import Todo from './Todo';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +26,9 @@ const useStyles = makeStyles(theme => ({
     },
   }));
   
-  export default function TransitionsModal() {
+  export default function TransitionsModal({getTodos}) {
+
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
   
@@ -40,15 +41,7 @@ const useStyles = makeStyles(theme => ({
     };
   
 
-    const [todos, setTodos] = useState([]);
-  
-    const getTodos = () => {
-      axios.get('https://wunderlist-2.herokuapp.com/api/todos/')
-        .then(res => {
-          setTodos(res.data.filter(todo => `${todo.user_id}` === localStorage.getItem("user_id")));
-        })
-    }
-  
+   
     useEffect(() => {
       getTodos();
     }, [])
