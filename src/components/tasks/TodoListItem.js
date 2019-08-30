@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import axios from 'axios';
 
 import {
@@ -14,6 +14,16 @@ import EditTodo from './EditTodo';
 
 const TodoListItem = memo(props => {
   const todo = props.todo;
+  const [updateTask, setUpdateTask] = useState(todo.completed);
+
+  useEffect(() => {
+    axios.put(`https://wunderlist-2.herokuapp.com/api/todos/${todo.id}`, { completed: updateTask })
+  }, [updateTask])
+
+  const toggleChecked = () => {
+    setUpdateTask(!updateTask);
+  }
+
   const deleteNote = () => {
     axios.delete(`https://wunderlist-2.herokuapp.com/api/todos/${todo.id}`, { id: props.id })
       .then(res => {
@@ -25,8 +35,8 @@ const TodoListItem = memo(props => {
 
   return (<ListItem divider={props.divider}>
     <Checkbox
-      onClick={props.onCheckBoxToggle}
-      checked={props.checked}
+      onClick={toggleChecked}
+      checked={updateTask}
       disableRipple />
     <div style={{flexDirection: 'row'}}>
       <ListItemText secondary={todo.title} />
