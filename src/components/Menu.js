@@ -3,9 +3,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import Search from './Search';
-import TodoPopup from './tasks/TodoPopup'
 
+import Search from './Search';
+import TodoPopup from './tasks/TodoPopup';
+import LogoutButton from './user/LogoutButton';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,18 +61,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Menu({getTodos}) {
+export default function Menu({ getTodos, welcomeMessage, logout }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-<TodoPopup getTodos={getTodos} />
+          <TodoPopup getTodos={getTodos} />
           <Typography className={classes.title} variant="h6" noWrap>
-            Todo 
+            {welcomeMessage} 
           </Typography>
-        <Search />
+        {/* <Search /> */}
+        <LogoutButton logout={logout} />
         </Toolbar>
       </AppBar>
     </div>

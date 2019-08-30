@@ -11,9 +11,15 @@ function App() {
   const [userID, setUserID] = useCustomHook("user_id");
   const [welcomeMessage, setWelcomeMessage] = useCustomHook("welcomMessage");
 
+  const logout = () => {
+    setToken();
+    setUserID();
+    setWelcomeMessage();
+  }
+
   return (
     <div className="App">
-      {token ? <HomePage /> : 
+      {token ? <HomePage welcomeMessage={welcomeMessage} logout={logout} /> : 
         <div>
           <Route exact path='/' render={props => <Login {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />
           <Route path='/register' render={props => <Register {...props} setToken={setToken} setUserID={setUserID} setWelcomeMessage={setWelcomeMessage} />} />

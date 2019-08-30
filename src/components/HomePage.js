@@ -1,13 +1,12 @@
-import React, { useState, memo } from 'react';
+import React, { useState } from 'react';
 import Todo from './tasks/Todo';
 import SearchBar from './Menu';
-import  '../index.css';
-import TodoList from './tasks/TodoList'
-import NewTodo from './tasks/NewTodo'
 import axios from 'axios';
+import { Header, Icon } from 'semantic-ui-react';
+import  '../index.css';
 
 
-function HomePage(props) {
+function HomePage({ welcomeMessage, logout }) {
   const [todos, setTodos] = useState([]);
   const getTodos = () => {
     axios.get('https://wunderlist-2.herokuapp.com/api/todos/')
@@ -19,8 +18,9 @@ function HomePage(props) {
 
   return (
     <div>
-  <SearchBar getTodos={getTodos}/>
-      <Todo getTodos={getTodos} todos={todos}/>
+      <SearchBar getTodos={getTodos} welcomeMessage={welcomeMessage} logout={logout} />
+      <Header as="h1">Wunderlist 2.0 <Icon name="file alternate outline" /></Header>
+      {todos.length ? <Todo getTodos={getTodos} todos={todos}/> : <Header as="h3">Don't be lazy. Add some todos!</Header>}
     </div>
   )
 }
