@@ -7,9 +7,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import EditTodoForm from './EditTodoForm';
 
 const EditTodo = ({ todo, getTodos }) => {
+  console.log('EditTodo: todo: ', todo)
   return (
     <Modal trigger={
-      <IconButton aria-label="Edit Todo" onClick={() => console.log('clicked')}>
+      <IconButton aria-label="Edit Todo">
         <EditIcon />      
       </IconButton>}
       centered="false"

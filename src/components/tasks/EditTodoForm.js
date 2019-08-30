@@ -12,6 +12,7 @@ const EditTask = ({ status, todo, getTodos }) => {
 
   return (
     <Form className="ui form">
+      <Field name="id" value={todo.id} hidden/>
       <div className="equal width fields">
         <div className="field">
           <div className="ui fluid input">
@@ -38,19 +39,20 @@ const EditTask = ({ status, todo, getTodos }) => {
 }
 
 const formikForm = withFormik({
-  mapPropsToValues({ task, title, setDate }) {
+  mapPropsToValues({ task, title, setDate, id }) {
     return {
+      id: id,
       task: task || "",
       title: title || "",
       setDate: setDate || "",
       user_id: localStorage.getItem("user_id") 
     }
   },
-  handleSubmit(values, { setStatus, resetForm }) {
-    axios.post('https://wunderlist-2.herokuapp.com/api/todos/', values)
+  handleSubmit(values, { setStatus }) {
+    console.log(values);
+    axios.post(`https://wunderlist-2.herokuapp.com/api/todos/${values.id}`, values)
       .then(res => {
         setStatus(res.data);
-        resetForm();
       })
       .catch(err => console.error(err))
   }
