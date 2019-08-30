@@ -11,6 +11,10 @@ import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
+  button: {
+    width: 100,
+    marginTop: 10,
+  },
     modal: {
       display: 'flex',
       alignItems: 'center',
@@ -68,7 +72,7 @@ const useStyles = makeStyles(theme => ({
           <Fade in={open}>
             <div className={classes.paper}>
             <NewTodo getTodos={getTodos} />
-            <Button  onClick={handleClose} variant="contained" color="secondary" className={classes.button}>
+            <Button  onClick={handleClose} variant="contained" color="secondary" className={classes.button} >
             Cancel
           </Button>
             </div>

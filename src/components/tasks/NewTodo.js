@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react';
 import { Form, Field, withFormik } from 'formik';
-import { Button } from 'semantic-ui-react';
+import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    width: 100,
+  },
+}));
 
 const NewTask = ({ status, getTodos }) => {
+  const classes = useStyles();
   useEffect(() => {
     if (status) {
       getTodos();
@@ -32,7 +40,7 @@ const NewTask = ({ status, getTodos }) => {
       <div className="field">
         <Field component="textarea" label="Notes" name="notes" placeholder="Notes" rows="2" />
       </div>
-      <Button type="submit">Add Task</Button>
+      <Button type="submit" variant="contained" color="primary" className={classes.button}>Add Task</Button>
     </Form>
   )
 }
