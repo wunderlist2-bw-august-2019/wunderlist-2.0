@@ -39,22 +39,22 @@ const EditTask = ({ status, todo, getTodos }) => {
 }
 
 const formikForm = withFormik({
-  mapPropsToValues({ task, title, setDate, id }) {
+  mapPropsToValues({ task, title, setDate, todo }) {
+    console.log('mapProps: todo: ', todo)
     return {
-      id: id,
-      task: task || "",
-      title: title || "",
-      setDate: setDate || "",
+      id: todo.id,
+      task: task,
+      title: title,
+      setDate: setDate,
       user_id: localStorage.getItem("user_id") 
     }
   },
-  handleSubmit(values, { setStatus }) {
-    console.log(values);
-    axios.post(`https://wunderlist-2.herokuapp.com/api/todos/${values.id}`, values)
+  handleSubmit(values, { setStatus, props: { todo: { id }} }) {
+    axios.put(`https://wunderlist-2.herokuapp.com/api/todos/${id}`, values)
       .then(res => {
         setStatus(res.data);
       })
-      .catch(err => console.error(err))
+      .catch(err => console.error(err.response))
   }
 })(EditTask);
 
