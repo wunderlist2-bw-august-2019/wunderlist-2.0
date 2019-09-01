@@ -43,8 +43,13 @@ const TodoListItem = memo(props => {
       checked={updateTask}
       disableRipple />
     <div style={{flexDirection: 'row'}}>
-      <ListItemText secondary={todo.title}  />
-      <ListItemText primary={todo.task} />
+      {updateTask ? 
+      (<><ListItemText secondary={todo.title} style={{textDecoration: 'line-through'}} />
+      <ListItemText primary={todo.task} style={{textDecoration: 'line-through'}}/></>)
+      :  
+      (<><ListItemText secondary={todo.title}  />
+      <ListItemText primary={todo.task} /></>)
+    }
     </div>
     <ListItemSecondaryAction>
       <EditTodo todo={todo} getTodos={props.getTodos} />
