@@ -1,14 +1,14 @@
 import React, { memo, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 import Layout from "./Layout";
 import TodoList from "./TodoList";
 
 const useStyles = makeStyles(theme => ({
   todoList: {
-    paddingTop: '30px',
-    alignContent: 'center',
-    textAlign: 'center'
+    paddingTop: "30px",
+    alignContent: "center",
+    textAlign: "center"
   }
 }));
 
@@ -17,15 +17,12 @@ const TodoApp = memo(props => {
 
   useEffect(() => {
     props.getTodos();
-  }, [])
+  }, []);
 
-  return (      
+  return (
     <Layout>
       <div className={classes.todoList}>
-        <TodoList
-          items={props.todos}
-          getTodos={props.getTodos}
-        />
+        <TodoList items={props.todos} getTodos={props.getTodos} />
       </div>
     </Layout>
   );
