@@ -15,7 +15,6 @@ const Register = ({
 }) => {
   useEffect(() => {
     if (status) {
-      console.log("status: ", status);
       setToken(status.token);
       setWelcomeMessage(status.message);
       setUserID(status.userID);

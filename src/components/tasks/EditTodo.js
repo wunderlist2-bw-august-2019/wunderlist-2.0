@@ -6,7 +6,6 @@ import EditIcon from "@material-ui/icons/Edit";
 import EditTodoForm from "./EditTodoForm";
 
 const EditTodo = ({ todo, getTodos }) => {
-  console.log("EditTodo: todo: ", todo);
   return (
     <Modal
       trigger={
@@ -14,7 +13,6 @@ const EditTodo = ({ todo, getTodos }) => {
           <EditIcon />
         </IconButton>
       }
-      centered="false"
       closeIcon
       closeOnTriggerClick
     >
