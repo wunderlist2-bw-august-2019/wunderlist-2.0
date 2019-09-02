@@ -48,7 +48,7 @@ const TodoListItem = memo(props => {
       <ListItem
         divider={expand ? true : props.divider}
         onClick={toggleExpand}
-        style={{cursor: 'pointer'}}
+        style={{ cursor: "pointer" }}
       >
         <Checkbox onClick={toggleChecked} checked={updateTask} disableRipple />
         <div style={{ flexDirection: "row" }}>
@@ -90,10 +90,7 @@ const TodoListItem = memo(props => {
             }
             inset
           />
-          <ListItemText 
-            primary="Due:"
-            secondary={todo.setDate}
-          />
+          <ListItemText primary="Due:" secondary={todo.setDate} />
         </ListItem>
       ) : null}
     </>

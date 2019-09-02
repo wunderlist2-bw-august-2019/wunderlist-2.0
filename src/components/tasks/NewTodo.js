@@ -45,7 +45,7 @@ const NewTask = ({ status, getTodos }) => {
         <div className="field">
           <div className="ui fluid input">
             <Field
-              type="input"
+              type="date"
               label="Due Date"
               name="setDate"
               placeholder="Due Date"

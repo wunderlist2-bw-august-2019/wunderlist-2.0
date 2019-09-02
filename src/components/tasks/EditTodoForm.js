@@ -60,10 +60,9 @@ const EditTask = ({ status, todo, getTodos }) => {
         <div className="field">
           <div className="ui fluid input">
             <Field
-              type="input"
+              type="date"
               label="Due Date"
               name="setDate"
-              placeholder={todo.setDate || "Due Date"}
             />
           </div>
         </div>
@@ -91,7 +90,6 @@ const EditTask = ({ status, todo, getTodos }) => {
 
 const formikForm = withFormik({
   mapPropsToValues({ task, title, setDate, todo }) {
-    console.log("mapProps: todo: ", todo);
     return {
       id: todo.id,
       task: task,
