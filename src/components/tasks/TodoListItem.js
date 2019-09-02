@@ -41,51 +41,61 @@ const TodoListItem = memo(props => {
 
   const toggleExpand = event => {
     setExpand(!expand);
-  }
+  };
 
   return (
     <>
-    <ListItem divider={props.divider} onClick={toggleExpand} flexDirection='column' >
-      <Checkbox onClick={toggleChecked} checked={updateTask} disableRipple />
-      <div style={{ flexDirection: "row" }}>
-        {updateTask ? (
-          <>
-            <ListItemText
-              secondary={todo.title}
-              style={{ textDecoration: "line-through" }}
-            />
-            <ListItemText
-              primary={todo.task}
-              style={{ textDecoration: "line-through" }}
-            />
-          </>
-        ) : (
-          <>
-            <ListItemText secondary={todo.title} />
-            <ListItemText primary={todo.task} />
-          </>
-        )}
-      </div>
-      <ListItemSecondaryAction>
-        <EditTodo todo={todo} getTodos={props.getTodos} />
-        <IconButton
-          aria-label="Delete Todo"
-          onClick={deleteNote}
-          color="secondary"
-        >
-          <DeleteOutlined />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-    {expand ? 
-    <ListItem divider>
-      <ListItemText
-        primary='Notes:'
-        secondary={todo.notes ? todo.notes : 'This item does not have notes'} 
-      />
-    </ListItem> :
-    null
-    }
+      <ListItem
+        divider={expand ? true : props.divider}
+        onClick={toggleExpand}
+        style={{cursor: 'pointer'}}
+      >
+        <Checkbox onClick={toggleChecked} checked={updateTask} disableRipple />
+        <div style={{ flexDirection: "row" }}>
+          {updateTask ? (
+            <>
+              <ListItemText
+                secondary={todo.title}
+                style={{ textDecoration: "line-through" }}
+              />
+              <ListItemText
+                primary={todo.task}
+                style={{ textDecoration: "line-through" }}
+              />
+            </>
+          ) : (
+            <>
+              <ListItemText secondary={todo.title} />
+              <ListItemText primary={todo.task} />
+            </>
+          )}
+        </div>
+        <ListItemSecondaryAction>
+          <EditTodo todo={todo} getTodos={props.getTodos} />
+          <IconButton
+            aria-label="Delete Todo"
+            onClick={deleteNote}
+            color="secondary"
+          >
+            <DeleteOutlined />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      {expand ? (
+        <ListItem divider>
+          <ListItemText
+            primary="Notes:"
+            secondary={
+              todo.notes ? todo.notes : "This item does not have notes"
+            }
+            inset
+          />
+          <ListItemText 
+            primary="Due:"
+            secondary={todo.setDate}
+          />
+        </ListItem>
+      ) : null}
     </>
   );
 });
