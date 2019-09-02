@@ -15,6 +15,7 @@ import EditTodo from "./EditTodo";
 const TodoListItem = memo(props => {
   const todo = props.todo;
   const [updateTask, setUpdateTask] = useState(todo.completed);
+  const [expand, setExpand] = useState(false);
 
   useEffect(() => {
     axios.put(`https://wunderlist-2.herokuapp.com/api/todos/${todo.id}`, {
@@ -25,8 +26,6 @@ const TodoListItem = memo(props => {
   const toggleChecked = () => {
     setUpdateTask(!updateTask);
   };
-
-  const strikeChecked = () => {};
 
   const deleteNote = () => {
     axios
@@ -40,8 +39,13 @@ const TodoListItem = memo(props => {
       .catch(err => console.error(err));
   };
 
+  const toggleExpand = event => {
+    setExpand(!expand);
+  }
+
   return (
-    <ListItem divider={props.divider}>
+    <>
+    <ListItem divider={props.divider} onClick={toggleExpand} flexDirection='column' >
       <Checkbox onClick={toggleChecked} checked={updateTask} disableRipple />
       <div style={{ flexDirection: "row" }}>
         {updateTask ? (
@@ -73,6 +77,16 @@ const TodoListItem = memo(props => {
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
+    {expand ? 
+    <ListItem divider>
+      <ListItemText
+        primary='Notes:'
+        secondary={todo.notes ? todo.notes : 'This item does not have notes'} 
+      />
+    </ListItem> :
+    null
+    }
+    </>
   );
 });
 
