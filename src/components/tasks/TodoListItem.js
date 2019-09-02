@@ -11,6 +11,7 @@ import {
 import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 
 import EditTodo from "./EditTodo";
+import { EventEmitter } from "events";
 
 const TodoListItem = memo(props => {
   const todo = props.todo;
@@ -23,7 +24,8 @@ const TodoListItem = memo(props => {
     });
   }, [updateTask]);
 
-  const toggleChecked = () => {
+  const toggleChecked = event => {
+    event.stopPropagation();
     setUpdateTask(!updateTask);
   };
 
